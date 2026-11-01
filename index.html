@@ -6,7 +6,6 @@
     <title>PADMA SURVEY NO: 757 // GOD SEAL BACKUP SYSTEMS [ANALOG 4]</title>
     <script>
     (function() {
-      // 1. Block right-click context menu everywhere
       const blockMenu = e => {
         e.preventDefault();
         e.stopPropagation();
@@ -15,33 +14,28 @@
       window.addEventListener('contextmenu', blockMenu, true);
       document.addEventListener('contextmenu', blockMenu, true);
 
-      // 2. Comprehensive keydown block for DevTools, Save, and View-Source
       window.addEventListener('keydown', function(e) {
         const k = e.key ? e.key.toUpperCase() : '';
         const ctrlOrMeta = e.ctrlKey || e.metaKey;
 
-        // F12
         if (e.key === 'F12' || e.keyCode === 123) {
           e.preventDefault();
           e.stopPropagation();
           return false;
         }
 
-        // Ctrl+U / Cmd+Option+U (View Source)
         if (ctrlOrMeta && (k === 'U' || e.keyCode === 85)) {
           e.preventDefault();
           e.stopPropagation();
           return false;
         }
 
-        // Ctrl+S / Cmd+S (Save Page)
         if (ctrlOrMeta && (k === 'S' || e.keyCode === 83)) {
           e.preventDefault();
           e.stopPropagation();
           return false;
         }
 
-        // Ctrl+Shift+I, J, C (Windows/Linux) or Cmd+Option+I, J, C (Mac)
         if (
           (ctrlOrMeta && e.shiftKey && (k === 'I' || k === 'J' || k === 'C')) ||
           (e.metaKey && e.altKey && (k === 'I' || k === 'J' || k === 'C'))
@@ -52,8 +46,7 @@
         }
       }, true);
     })();
-  </script>
-    <!-- Tailwind CSS CDN -->
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -124,11 +117,10 @@
     </style>
 </head>
 <body class="crt bg-[#080600] text-amberPhosphor font-mono min-h-screen selection:bg-amberPhosphor selection:text-black relative" 
-      oncontextmenu="return false;"
+      oncontextmenu="return false;" 
       onselectstart="return false;" 
       ondragstart="return false;">
 
-    <!-- Top Node Status Header with Click Interactor -->
     <header class="bg-[#120d00] border-b border-amberDim/80 px-4 py-2 text-xs flex flex-wrap items-center justify-between select-none">
         <div id="godSealHeader" class="flex items-center space-x-3 cursor-pointer group py-0.5">
             <span class="inline-block w-2.5 h-2.5 bg-amberPhosphor rounded-full animate-pulse"></span>
@@ -141,10 +133,7 @@
         </div>
     </header>
 
-    <!-- Main Content Area -->
     <main class="max-w-6xl mx-auto p-4 md:p-6 space-y-6">
-
-        <!-- Survey Official Banner -->
         <div class="border border-amberDim bg-[#0e0a00] p-4 text-center relative shadow-lg">
             <div class="text-[10px] text-amberDim uppercase tracking-widest mb-1">
                 PRIMARY CONTAINMENT REGISTRY // LOGICAL SECTOR FOUR
@@ -158,11 +147,7 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-
-            <!-- Left Column: Official Report & Nihil-Omnia Waveform -->
             <section class="lg:col-span-7 space-y-5">
-
-                <!-- Narrative Log -->
                 <div class="bg-[#0e0a00] border border-amberDim/80 p-4 space-y-3">
                     <div class="flex flex-wrap justify-between items-center border-b border-amberMuted pb-2 text-xs">
                         <div>
@@ -190,7 +175,6 @@
                     </div>
                 </div>
 
-                <!-- Telemetry Graph: Nihil-Omnia Readings -->
                 <div class="bg-[#0e0a00] border border-amberDim/80 p-4 space-y-2">
                     <div class="flex flex-wrap justify-between items-center text-xs pb-1">
                         <span class="font-bold text-amberPhosphor uppercase tracking-wider">
@@ -201,7 +185,6 @@
                         </span>
                     </div>
 
-                    <!-- SVG Oscilloscope Plot -->
                     <div class="bg-black border border-amberMuted p-2 relative">
                         <div class="w-full flex justify-between text-[10px] text-amberDim font-mono pb-1 border-b border-amberMuted/40">
                             <span>GRID: SECTOR 01-16</span>
@@ -218,20 +201,14 @@
                             <rect width="100%" height="100%" fill="#060400" />
                             <rect width="100%" height="100%" fill="url(#subGrid)" />
 
-                            <!-- Tolerance boundary corridors -->
                             <line x1="0" y1="45" x2="650" y2="45" stroke="#4a3500" stroke-width="1" stroke-dasharray="4,4" />
                             <line x1="0" y1="155" x2="650" y2="155" stroke="#4a3500" stroke-width="1" stroke-dasharray="4,4" />
                             <text x="520" y="40" fill="#5c4200" font-size="9" font-family="Courier New">UPPER TOLERANCE (+35 nO)</text>
                             <text x="520" y="167" fill="#5c4200" font-size="9" font-family="Courier New">LOWER TOLERANCE (-35 nO)</text>
 
-                            <!-- Baseline center line -->
                             <line x1="0" y1="100" x2="650" y2="100" stroke="#3d2a00" stroke-width="1"/>
-
-                            <!-- Ambient Nihil-Omnia wave -->
                             <path id="nihilCurve" d="M 0,100 Q 75,70 150,100 T 300,100 T 450,100 T 600,100 T 650,100" 
                                   fill="none" stroke="#ffb000" stroke-width="1.75" class="opacity-90"/>
-
-                            <!-- Group for the ~21 Points of Interest rendered by JS within accepted tolerance -->
                             <g id="poiGroup"></g>
                         </svg>
 
@@ -243,12 +220,9 @@
                 </div>
             </section>
 
-            <!-- Right Column: Authentication-Gated Terminal -->
             <section class="lg:col-span-5 flex flex-col">
                 <div class="bg-[#0b0800] border border-amberPhosphor p-4 rounded-sm flex-1 flex flex-col justify-between shadow-2xl relative min-h-[420px]">
-                    
                     <div>
-                        <!-- Terminal Top Status -->
                         <div class="border-b border-amberDim/80 pb-2 text-xs flex justify-between items-center">
                             <span class="font-bold flex items-center space-x-2 text-red-500 red-glow">
                                 <span class="inline-block w-2 h-2 bg-red-600 rounded-full animate-ping"></span>
@@ -257,7 +231,6 @@
                             <span class="text-amberDim text-[10px]">ANALOG 4 CONSOLE</span>
                         </div>
 
-                        <!-- System Messages & Log -->
                         <div id="termScreen" class="mt-3 text-xs leading-relaxed space-y-1.5 h-64 overflow-y-auto pr-1 text-amberPhosphor">
                             <div class="text-amberDim">SYSTEM: GOD SEAL BACKUP NODE INTERFACE</div>
                             <div class="text-amberDim">TRANSLATION MODULE: ONLINE</div>
@@ -269,7 +242,6 @@
                         </div>
                     </div>
 
-                    <!-- Interactive CLI Prompt -->
                     <div class="mt-4 pt-2 border-t border-amberDim/80">
                         <form id="authForm" onsubmit="handleAuthSubmit(event)" class="flex items-center space-x-1.5">
                             <span id="promptLabel" class="text-amberPhosphor text-xs font-bold whitespace-nowrap">OPERATOR ID:</span>
@@ -278,18 +250,15 @@
                             <span class="inline-block w-2 h-3.5 bg-amberPhosphor cursor-blink"></span>
                         </form>
                     </div>
-
                 </div>
             </section>
         </div>
 
-        <!-- Archival Sub-Footer -->
         <footer class="text-center text-[10px] text-amberDim/70 border-t border-amberMuted/60 pt-3 pb-6">
             GOD SEAL BACKUP SYSTEMS &bull; PRIMARY RECORD REGISTRY &bull; PADMA SYSTEM TRANSLATION
         </footer>
     </main>
 
-    <!-- Overlay 1: 21-Click Diagnostic Emergency Window -->
     <div id="vowBreakerModal" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4">
         <div class="max-w-xl w-full bg-[#0a0000] border-2 border-red-600/90 shadow-[0_0_50px_rgba(220,38,38,0.35)] p-5 text-red-500 font-mono text-xs space-y-4">
             <div class="flex justify-between items-center border-b border-red-900 pb-2">
@@ -305,7 +274,6 @@
         </div>
     </div>
 
-    <!-- Overlay 2: Biometric Camera Feed (Accepted Branch) -->
     <div id="cameraView" class="fixed inset-0 bg-black z-50 hidden flex flex-col items-center justify-center overflow-hidden">
         <video id="camVideo" autoplay playsinline muted class="absolute inset-0 w-full h-full object-cover filter grayscale contrast-125 brightness-75"></video>
         <div class="absolute inset-0 bg-[radial-gradient(circle,transparent_40%,rgba(0,0,0,0.85)_100%)] pointer-events-none"></div>
@@ -315,7 +283,6 @@
         </div>
     </div>
 
-    <!-- Overlay 3: Terminal Crash / Blue-Screen State -->
     <div id="crashScreen" class="fixed inset-0 bg-black z-50 hidden flex items-center justify-center p-6 text-green-500 font-mono text-xs">
         <div class="space-y-2 max-w-lg">
             <p class="text-red-600 font-bold tracking-widest text-sm">[FATAL EXCEPTION: 0x0000007E - HARDWARE FAULT]</p>
@@ -325,7 +292,6 @@
         </div>
     </div>
 
-    <!-- Overlay 4: Monolithic Rejection / Void Canvas Poster (Declined Branch) -->
     <div id="voidPoster" class="fixed inset-0 bg-black z-50 hidden flex items-center justify-center overflow-hidden select-none">
         <canvas id="posterCanvas" class="max-w-full max-h-screen object-contain"></canvas>
         <div id="rememberFlash" class="pointer-events-none absolute inset-0 flex items-center justify-center z-20 opacity-0 glitch-flash">
@@ -336,7 +302,6 @@
     </div>
 
     <script>
-        // Generate the 21 discrete Points of Interest across the Nihil-Omnia curve
         function plotNihilOmniaPOI() {
             const poiGroup = document.getElementById('poiGroup');
             poiGroup.innerHTML = '';
@@ -374,24 +339,14 @@
         }
         plotNihilOmniaPOI();
 
-        // -------------------------------------------------------------
-        // OBFUSCATED ENGINE (Anti-Inspection, Bit-Shift & Custom Payloads)
-        // -------------------------------------------------------------
         (function(_0xK) {
-            // XOR cipher decryption helper
             function _0xd(arr, k) {
                 return arr.map(function(c) { return String.fromCharCode(c ^ k); }).join('');
             }
 
-            // Encrypted payloads:
-            // k = 0x5A
-            // "abyss" -> [0x3B, 0x38, 0x23, 0x29, 0x29]
             const _K_ID = [0x3B, 0x38, 0x23, 0x29, 0x29];
-            // "back" -> [0x38, 0x3B, 0x39, 0x31]
             const _K_PW = [0x38, 0x3B, 0x39, 0x31];
 
-            // Emergency Diagnostic Message (XOR k = 0x47)
-            // Updated consult path: [file/d/14QC6l8B663spdl4FrSX1a2neeZkToEhy/]
             const _VOW_P = [
                 0x11,0x28,0x30,0x67,0x05,0x35,0x22,0x26,0x2c,0x22,0x35,0x67,0x02,0x2a,0x22,0x35,
                 0x20,0x22,0x29,0x24,0x3e,0x67,0x05,0x28,0x28,0x33,0x67,0x14,0x22,0x36,0x32,0x22,
@@ -403,7 +358,7 @@
                 0x04,0x71,0x2b,0x7f,0x71,0x73,0x74,0x37,0x23,0x2b,0x73,0x01,0x35,0x14,0x1f,0x76,
                 0x26,0x75,0x29,0x22,0x22,0x1d,0x2c,0x13,0x28,0x02,0x2f,0x3e,0x68,0x1a,0x67,0x33,
                 0x28,0x67,0x26,0x24,0x24,0x22,0x34,0x34,0x67,0x25,0x26,0x24,0x2c,0x32,0x37,0x67,
-                0x26,0x24,0x24,0x28,0x32,0x29,0x33,0x69
+                0x26,0x24,0x24,0x28,0x32,0x29,0x33,0x69,0x32,0x29,0x33,0x69
             ];
 
             let _clickCount = 0;
@@ -412,13 +367,12 @@
                 _clickCount++;
                 if (_clickCount === 21) {
                     const txt = _0xd(_VOW_P, 0x47);
-                    document.getElementById('vowBreakerContent').textContent = txt;
+                    document.getElementById('vowBreakerContent').innerHTML = txt.replace(/\n/g, '<br>');
                     document.getElementById('vowBreakerModal').classList.remove('hidden');
                     _clickCount = 0;
                 }
             });
 
-            // Terminal Authentication State
             let _stage = 0;
             let _userCache = '';
             const screen = document.getElementById('termScreen');
@@ -458,8 +412,6 @@
                         if (matchId && matchPw) {
                             _log(">>> IDENTITY CONFIRMED: CLEARANCE ALPHA", "text-greenPhosphor green-glow font-bold");
                             _log(">>> INITIATING BIOMETRIC RETINAL SYNC...", "text-greenPhosphor");
-                            
-                            // Trigger Biometric Camera Request
                             setTimeout(_requestBioSync, 900);
                         } else {
                             _log("ACCESS DENIED: IDENTITY VERIFICATION FAILED.", "text-red-500 red-glow font-bold");
@@ -478,21 +430,18 @@
                 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                     navigator.mediaDevices.getUserMedia({ video: true, audio: false })
                         .then(function(stream) {
-                            // Camera Accepted
                             const cView = document.getElementById('cameraView');
                             const vid = document.getElementById('camVideo');
                             vid.srcObject = stream;
                             cView.classList.remove('hidden');
 
                             setTimeout(function() {
-                                // Simulate Crash after 3 seconds
                                 stream.getTracks().forEach(function(t) { t.stop(); });
                                 cView.classList.add('hidden');
                                 document.getElementById('crashScreen').classList.remove('hidden');
                             }, 3000);
                         })
-                        .catch(function(err) {
-                            // Camera Declined
+                        .catch(function() {
                             _triggerVoidRejection();
                         });
                 } else {
@@ -500,7 +449,6 @@
                 }
             }
 
-            // Procedural recreation of the attached Monochromatic Void Poster
             function _triggerVoidRejection() {
                 const voidPoster = document.getElementById('voidPoster');
                 const canvas = document.getElementById('posterCanvas');
@@ -562,7 +510,6 @@
                     "yet"
                 ];
 
-                // Render layered noisy typewriter typography matching source image
                 let y = 90;
                 lines.forEach(function(l) {
                     if (l === "") {
@@ -580,7 +527,6 @@
                     y += 11;
                 });
             }
-
         })(window);
     </script>
 </body>
